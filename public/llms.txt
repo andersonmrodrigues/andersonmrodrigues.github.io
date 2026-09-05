@@ -44,6 +44,7 @@ Anderson Rodrigues is a Senior Software Engineer with over 8 years of experience
 - **Certifications:** Apache Airflow Data Engineering, SOLID Java & OOP, Apache Kafka Cluster & Evolution, Generative AI Fundamentals, AI Fluency Framework.
 
 ## Published Technical Articles
+- [What Happens Under the Hood When You Send a Message to an AI](https://andersonmaikrodrigues.com/blog/what-happens-under-the-hood-ai)
 - [Building Post-Purchase Financing at Scale with Clojure](https://andersonmaikrodrigues.com/blog/post-purchase-financing-clojure)
 - [Automating Complex Refund Workflows in Event-Driven Financial Systems](https://andersonmaikrodrigues.com/blog/automating-financial-refund-workflows)
 - [Leveraging AI Agents for Real-Time Infrastructure Incident Diagnostics](https://andersonmaikrodrigues.com/blog/ai-assisted-engineering-investigations)
