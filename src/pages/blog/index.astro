@@ -8,59 +8,51 @@ const posts = (await getCollection('blog')).sort(
 ---
 
 <Layout
-  title="Articles & Technical Writing - Anderson Rodrigues"
-  description="Technical articles on distributed systems, Clojure, functional programming, event-driven microservices, and AI-assisted engineering by Anderson Rodrigues."
+  title="Writing - Anderson Rodrigues"
+  description="Technical articles and architecture deep dives by Anderson Rodrigues."
 >
-  <section class="py-16 sm:py-24 border-b border-slate-800/60 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl">
-        <h1 class="text-xs font-bold uppercase tracking-widest text-sky-400">Engineering Writing</h1>
-        <h2 class="text-4xl sm:text-5xl font-extrabold text-white mt-3 tracking-tight">Articles & Architecture Deep Dives</h2>
-        <p class="mt-4 text-slate-300 text-lg leading-relaxed">
-          In-depth technical writing covering Clojure, functional programming, high-scale financial infrastructure, distributed sagas, and AI engineering workflows.
-        </p>
-      </div>
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 py-12 sm:py-20 space-y-12">
+    <div class="space-y-3">
+      <h1 class="text-4xl font-serif text-white tracking-tight">Writing</h1>
+      <p class="text-slate-300 text-base leading-relaxed">
+        Technical articles on distributed systems, AI engineering, Clojure, and software architecture.
+      </p>
     </div>
-  </section>
 
-  <section class="py-16">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {posts.map((post) => (
-          <article class="flex flex-col justify-between p-7 rounded-2xl bg-slate-900 border border-slate-800/80 hover:border-slate-700 transition group">
-            <div>
-              <div class="flex items-center gap-2 text-xs text-slate-400 mb-3">
-                <time datetime={post.data.pubDate.toISOString()}>
-                  {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
-                </time>
-                <span>•</span>
-                <span>{post.data.readTime}</span>
-              </div>
+    <div class="space-y-10 pt-6 border-t border-slate-800/80">
+      {posts.map((post) => (
+        <article class="group space-y-2">
+          <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+            <time datetime={post.data.pubDate.toISOString()}>
+              {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+            </time>
+            <span>•</span>
+            <span>{post.data.readTime}</span>
+          </div>
 
-              <h3 class="text-xl font-bold text-white group-hover:text-sky-400 transition leading-snug">
-                <a href={`/blog/${post.id}`}>{post.data.title}</a>
-              </h3>
+          <h2 class="text-xl font-semibold text-white group-hover:text-sky-400 transition leading-snug">
+            <a href={`/blog/${post.id}`}>{post.data.title}</a>
+          </h2>
 
-              <p class="mt-3 text-sm text-slate-300 line-clamp-4 leading-relaxed">
-                {post.data.description}
-              </p>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            {post.data.description}
+          </p>
+
+          <div class="flex items-center justify-between pt-2">
+            <div class="flex flex-wrap gap-2 font-mono text-[11px] text-slate-400">
+              {post.data.tags.map((tag) => (
+                <span>#{tag}</span>
+              ))}
             </div>
-
-            <div class="mt-8 pt-4 border-t border-slate-800/60 flex items-center justify-between">
-              <div class="flex flex-wrap gap-1.5">
-                {post.data.tags.map((tag) => (
-                  <span class="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-800 text-slate-300 border border-slate-700/50">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <a href={`/blog/${post.id}`} class="text-xs font-bold text-sky-400 group-hover:translate-x-1 transition flex items-center gap-1">
-                Read &rarr;
-              </a>
-            </div>
-          </article>
-        ))}
-      </div>
+            <a
+              href={`/blog/${post.id}`}
+              class="text-xs font-mono text-sky-400 group-hover:underline flex items-center gap-1"
+            >
+              Read post &rarr;
+            </a>
+          </div>
+        </article>
+      ))}
     </div>
-  </section>
+  </div>
 </Layout>

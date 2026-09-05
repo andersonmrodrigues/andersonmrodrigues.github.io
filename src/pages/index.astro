@@ -15,13 +15,20 @@ const posts = (await getCollection('blog')).sort(
 
     <!-- Bio / Header Section -->
     <section class="space-y-6">
-      <div class="space-y-2">
-        <h1 class="text-4xl sm:text-5xl font-serif text-white tracking-tight leading-tight">
-          Anderson Rodrigues
-        </h1>
-        <p class="text-sm font-mono text-sky-400">
-          Senior Software Engineer @ Nubank • Distributed Systems & Clojure
-        </p>
+      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+        <img
+          src="/anderson.jpg"
+          alt="Anderson Rodrigues"
+          class="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover border-2 border-slate-800 shadow-xl shrink-0"
+        />
+        <div class="space-y-1.5">
+          <h1 class="text-4xl sm:text-5xl font-serif text-white tracking-tight leading-tight">
+            Anderson Rodrigues
+          </h1>
+          <p class="text-sm font-mono text-sky-400">
+            Senior Software Engineer @ Nubank • Distributed Systems & Clojure
+          </p>
+        </div>
       </div>
 
       <div class="text-slate-300 text-base sm:text-lg leading-relaxed space-y-4">
@@ -94,10 +101,18 @@ const posts = (await getCollection('blog')).sort(
               {post.data.description}
             </p>
 
-            <div class="flex flex-wrap gap-2 pt-1 font-mono text-[11px] text-slate-400">
-              {post.data.tags.map((tag) => (
-                <span>#{tag}</span>
-              ))}
+            <div class="flex items-center justify-between pt-1">
+              <div class="flex flex-wrap gap-2 font-mono text-[11px] text-slate-400">
+                {post.data.tags.map((tag) => (
+                  <span>#{tag}</span>
+                ))}
+              </div>
+              <a
+                href={`/blog/${post.id}`}
+                class="text-xs font-mono text-sky-400 group-hover:underline flex items-center gap-1"
+              >
+                Read post &rarr;
+              </a>
             </div>
           </article>
         ))}
