@@ -38,6 +38,12 @@ const posts = (await getCollection('blog')).sort(
 
       <div class="flex flex-wrap items-center gap-5 pt-2 font-mono text-xs">
         <a
+          href="mailto:andersonmaikrodrigues@gmail.com"
+          class="text-sky-400 hover:underline flex items-center gap-1"
+        >
+          Email &rarr;
+        </a>
+        <a
           href="https://www.linkedin.com/in/andersonmaikrodrigues"
           target="_blank"
           rel="noopener noreferrer"
@@ -57,7 +63,7 @@ const posts = (await getCollection('blog')).sort(
           href="/rss.xml"
           class="text-sky-400 hover:underline flex items-center gap-1"
         >
-          RSS Feed &rarr;
+          RSS &rarr;
         </a>
       </div>
     </section>
