@@ -41,7 +41,7 @@ The most likely candidate token (or a sampled token based on temperature and top
 ### 7. The Autoregressive Loop
 The newly generated token is appended to the input prompt, becoming the new context. The entire process repeats, one single token at a time:
 
-$$\text{Message} \longrightarrow \text{Tokens} \longrightarrow \text{Embeddings} \longrightarrow \text{Neural Network} \longrightarrow \text{Probabilities} \longrightarrow \text{Next Token}$$
+`Message` → `Tokens` → `Embeddings` → `Neural Network` → `Probabilities` → `Next Token`
 
 ---
 
