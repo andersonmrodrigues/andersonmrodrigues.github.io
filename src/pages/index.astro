@@ -1,0 +1,535 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<Layout
+  title="Anderson Rodrigues - Senior Software Engineer @ Nubank | Clojure & Java"
+  description="Senior Software Engineer with 8+ years experience building scalable backend services, distributed systems, Clojure & Java applications at Nubank scale."
+>
+  <!-- Hero Section -->
+  <section class="relative py-16 lg:py-24 overflow-hidden border-b border-slate-800/80 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:3.5rem_3.5rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left: Hero Text -->
+        <div class="lg:col-span-7">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/25 text-sky-400 text-xs font-mono font-semibold tracking-wide uppercase mb-6">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Senior Software Engineer @ Nubank
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1]">
+            High-Scale <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-amber-300 to-emerald-400">Distributed Systems</span> & Financial Architecture.
+          </h1>
+
+          <p class="mt-6 text-base sm:text-lg text-slate-300 leading-relaxed">
+            With 8+ years of engineering experience, I architect resilient, high-throughput backend services using <strong class="text-white font-semibold">Clojure</strong>, <strong class="text-white font-semibold">Java</strong>, and <strong class="text-white font-semibold">AWS</strong>. Currently leading technical delivery for credit and payment systems at Nubank scale.
+          </p>
+
+          <div class="mt-8 flex flex-wrap items-center gap-4">
+            <a
+              href="/#experience"
+              class="px-6 py-3.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-sm transition shadow-lg shadow-sky-500/20 flex items-center gap-2"
+            >
+              Explore Track Record
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </a>
+            <a
+              href="/blog"
+              class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-white font-semibold text-sm transition flex items-center gap-2"
+            >
+              Architecture Deep Dives
+            </a>
+          </div>
+
+          <!-- Quick Tech Stack Badges -->
+          <div class="mt-10 pt-6 border-t border-slate-800/80 flex flex-wrap items-center gap-2 text-xs font-mono">
+            <span class="text-slate-500 font-sans uppercase font-bold mr-1">Stack:</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-sky-300">Clojure</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-amber-300">Java 21+</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-emerald-300">Kafka</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-300">Spring Boot / Quarkus</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-indigo-300">AWS</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-rose-300">AI Agents</span>
+          </div>
+        </div>
+
+        <!-- Right: Signature Clojure REPL / Interactive Domain Visualizer -->
+        <div class="lg:col-span-5">
+          <div class="rounded-2xl bg-slate-900/90 border border-slate-800 shadow-2xl p-5 font-mono text-xs overflow-hidden relative">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-800 mb-4 text-slate-400">
+              <div class="flex items-center gap-1.5">
+                <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
+                <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
+                <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+                <span class="ml-2 font-bold text-slate-200" id="repl-filename">financing-engine.clj</span>
+              </div>
+              <span class="text-[10px] text-emerald-400 font-bold bg-emerald-400/10 px-2 py-0.5 rounded border border-emerald-400/20 animate-pulse">REPL Evaluated</span>
+            </div>
+
+            <!-- Domain Scenario Tabs -->
+            <div class="flex gap-1 mb-4 p-1 bg-slate-950 rounded-lg border border-slate-800 text-[10px]" id="repl-tabs">
+              <button data-tab="financing" class="repl-tab flex-1 py-1 px-2 rounded font-semibold text-sky-400 bg-slate-800 border border-slate-700 transition">
+                1. Financing
+              </button>
+              <button data-tab="refund" class="repl-tab flex-1 py-1 px-2 rounded font-semibold text-slate-400 hover:text-white transition">
+                2. Refund Saga
+              </button>
+              <button data-tab="ai" class="repl-tab flex-1 py-1 px-2 rounded font-semibold text-slate-400 hover:text-white transition">
+                3. AI Diagnostics
+              </button>
+            </div>
+
+            <!-- Code snippet display -->
+            <div id="repl-content" class="space-y-1 text-slate-300 min-h-[220px] transition-all duration-300">
+              <!-- Content inserted via JS -->
+            </div>
+
+          </div>
+        </div>
+
+        <script>
+          const scenarios = {
+            financing: {
+              file: "financing_engine.clj",
+              code: `
+<p><span class="text-purple-400">(ns</span> <span class="text-sky-300">nubank.credit.financing</span>)</p>
+<p class="pt-2"><span class="text-purple-400">(defn</span> <span class="text-amber-300">evaluate-post-purchase</span> [user tx]</p>
+<p class="pl-4"><span class="text-purple-400">(-></span> user</p>
+<p class="pl-8"><span class="text-sky-300">(check-credit-eligibility</span> tx<span class="text-sky-300">)</span></p>
+<p class="pl-8"><span class="text-sky-300">(build-12x-installment-schedule)</span></p>
+<p class="pl-8"><span class="text-sky-300">(apply-regulatory-iof-tax)</span><span class="text-purple-400">))</span></p>
+
+<div class="mt-4 p-3 rounded-xl bg-slate-950 border border-slate-800">
+  <p class="text-emerald-400 font-bold mb-1 flex items-center gap-1.5">
+    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+    => Evaluated Result
+  </p>
+  <div class="text-slate-400 space-y-0.5">
+    <p><span class="text-slate-500">:status</span> <span class="text-emerald-400 font-bold">:approved</span></p>
+    <p><span class="text-slate-500">:plan</span> <span class="text-white">12x R$ 84.50</span> <span class="text-slate-500">@</span> <span class="text-amber-300">1.89% APR</span></p>
+    <p><span class="text-slate-500">:latency</span> <span class="text-sky-300">14.2ms</span> <span class="text-slate-500 font-sans italic">(P99 &lt; 30ms)</span></p>
+  </div>
+</div>
+              `
+            },
+            refund: {
+              file: "refund_saga.clj",
+              code: `
+<p><span class="text-purple-400">(ns</span> <span class="text-sky-300">nubank.refunds.saga</span>)</p>
+<p class="pt-2"><span class="text-purple-400">(defn-spec</span> <span class="text-amber-300">execute-multi-service-refund</span></p>
+<p class="pl-4">[refund-event <span class="text-purple-400">:event/refund-requested</span>]</p>
+<p class="pl-4"><span class="text-purple-400">(let</span> [breakdown <span class="text-sky-300">(recalculate-proportional-interest</span> refund-event<span class="text-sky-300">)</span>]</p>
+<p class="pl-6"><span class="text-purple-400">(publish-kafka-event!</span> <span class="text-rose-400">:topic/accounting-reversals</span> breakdown<span class="text-purple-400">)))</span></p>
+
+<div class="mt-4 p-3 rounded-xl bg-slate-950 border border-slate-800">
+  <p class="text-emerald-400 font-bold mb-1 flex items-center gap-1.5">
+    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+    => Saga State Machine
+  </p>
+  <div class="text-slate-400 space-y-0.5">
+    <p><span class="text-slate-500">:proportional-interest</span> <span class="text-amber-300">R$ 14.82 reversed</span></p>
+    <p><span class="text-slate-500">:waived-future-debt</span> <span class="text-sky-300">R$ 676.00</span></p>
+    <p><span class="text-slate-500">:kafka-ack</span> <span class="text-emerald-400 font-bold">:partition-3-offset-98421</span></p>
+  </div>
+</div>
+              `
+            },
+            ai: {
+              file: "ai_incident_agent.clj",
+              code: `
+<p><span class="text-purple-400">(ns</span> <span class="text-sky-300">nubank.ai.diagnostics</span>)</p>
+<p class="pt-2"><span class="text-purple-400">(defn</span> <span class="text-amber-300">investigate-incident</span> [alert-context]</p>
+<p class="pl-4"><span class="text-purple-400">(-></span> alert-context</p>
+<p class="pl-8"><span class="text-sky-300">(fetch-prometheus-p99-spikes)</span></p>
+<p class="pl-8"><span class="text-sky-300">(query-recent-git-deploy-shas)</span></p>
+<p class="pl-8"><span class="text-sky-300">(synthesize-evidence-graph)</span><span class="text-purple-400">))</span></p>
+
+<div class="mt-4 p-3 rounded-xl bg-slate-950 border border-slate-800">
+  <p class="text-rose-400 font-bold mb-1 flex items-center gap-1.5">
+    <span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>
+    => AI Agent Hypothesis (92% Confidence)
+  </p>
+  <div class="text-slate-400 space-y-0.5">
+    <p><span class="text-slate-500">:root-cause</span> <span class="text-rose-300">Unindexed query on user_risk_profiles</span></p>
+    <p><span class="text-slate-500">:remediation</span> <span class="text-emerald-400 font-bold">Rollback commit a8f9c2d</span></p>
+    <p><span class="text-slate-500">:mttd-reduction</span> <span class="text-amber-300">15 min -> 1.8 min</span></p>
+  </div>
+</div>
+              `
+            }
+          };
+
+          const fileEl = document.getElementById('repl-filename');
+          const contentEl = document.getElementById('repl-content');
+          const tabs = document.querySelectorAll('.repl-tab');
+
+          function renderScenario(key) {
+            const data = scenarios[key];
+            if (!data) return;
+            if (fileEl) fileEl.textContent = data.file;
+            if (contentEl) contentEl.innerHTML = data.code;
+
+            tabs.forEach(tab => {
+              if (tab.getAttribute('data-tab') === key) {
+                tab.className = 'repl-tab flex-1 py-1 px-2 rounded font-semibold text-sky-400 bg-slate-800 border border-slate-700 transition';
+              } else {
+                tab.className = 'repl-tab flex-1 py-1 px-2 rounded font-semibold text-slate-400 hover:text-white transition';
+              }
+            });
+          }
+
+          tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+              const key = tab.getAttribute('data-tab');
+              renderScenario(key);
+            });
+          });
+
+          // Initial render
+          renderScenario('financing');
+        </script>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact Metrics Banner -->
+  <section id="impact" class="py-16 bg-slate-900/60 border-b border-slate-800/60">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+        <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800/80">
+          <p class="text-3xl sm:text-4xl font-extrabold text-sky-400 tracking-tight">+68%</p>
+          <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mt-2">Conversion to NuPay</p>
+          <p class="text-xs text-slate-500 mt-1">Driven by Credit Awareness & Merchant Hub initiatives</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800/80">
+          <p class="text-3xl sm:text-4xl font-extrabold text-indigo-400 tracking-tight">-40%</p>
+          <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mt-2">System Downtime</p>
+          <p class="text-xs text-slate-500 mt-1">Through Java microservices optimization & tuning</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800/80">
+          <p class="text-3xl sm:text-4xl font-extrabold text-emerald-400 tracking-tight">-35%</p>
+          <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mt-2">Processing Latency</p>
+          <p class="text-xs text-slate-500 mt-1">Event-driven pipelines processing millions of daily transactions</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800/80">
+          <p class="text-3xl sm:text-4xl font-extrabold text-amber-400 tracking-tight">8+ Yrs</p>
+          <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mt-2">Engineering Scale</p>
+          <p class="text-xs text-slate-500 mt-1">Across Fintech, Banking, Automotive & Enterprise</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 border-b border-slate-800/60">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <h2 class="text-xs font-bold uppercase tracking-widest text-sky-400">About & Engineering Philosophy</h2>
+        <h3 class="text-3xl sm:text-4xl font-bold text-white mt-3">Architecting for Resilience, Precision, and Scale</h3>
+        <p class="mt-6 text-slate-300 leading-relaxed">
+          I take complex product requirements from early technical design and architecture through implementation and production operation. My core expertise lies in building resilient, event-driven microservices that process high-volume financial data with strict consistency and minimal latency.
+        </p>
+        <p class="mt-4 text-slate-300 leading-relaxed">
+          Currently at <strong class="text-white">Nubank</strong>, I focus on credit eligibility, payment conditions, post-purchase financing capabilities, and automated financial reversal workflows using Clojure and functional programming principles. I also explore how AI can augment engineering workflows, having built internal AI-assisted diagnostic tools for incident response and evidence collection.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Systems & Architecture Grid -->
+  <section id="expertise" class="py-20 border-b border-slate-800/60 bg-slate-900/40">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="text-xs font-bold uppercase tracking-widest text-sky-400">Technical Competencies</h2>
+        <h3 class="text-3xl sm:text-4xl font-bold text-white mt-3">Architecture & Systems Domain</h3>
+      </div>
+
+      <div class="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Card 1 -->
+        <div class="p-8 rounded-2xl bg-slate-900 border border-slate-800/80 hover:border-slate-700 transition">
+          <div class="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400 font-bold mb-6">
+            λ
+          </div>
+          <h4 class="text-xl font-bold text-white">Functional Programming & Clojure</h4>
+          <p class="mt-3 text-sm text-slate-400 leading-relaxed">
+            Designing immutable, data-driven domain logic, thread-first rule engines, and idempotent transaction state machines for financial platforms.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="p-8 rounded-2xl bg-slate-900 border border-slate-800/80 hover:border-slate-700 transition">
+          <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 font-bold mb-6">
+            ⚡
+          </div>
+          <h4 class="text-xl font-bold text-white">Event-Driven Architecture & Messaging</h4>
+          <p class="mt-3 text-sm text-slate-400 leading-relaxed">
+            Building real-time stream processing pipelines and asynchronous sagas using Apache Kafka, Apache Spark, and event sourcing principles.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="p-8 rounded-2xl bg-slate-900 border border-slate-800/80 hover:border-slate-700 transition">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-bold mb-6">
+            ☕
+          </div>
+          <h4 class="text-xl font-bold text-white">High-Performance Java & Microservices</h4>
+          <p class="mt-3 text-sm text-slate-400 leading-relaxed">
+            Deep expertise in Java (6 through 21+), Spring Boot, Quarkus, performance tuning, JVM optimization, and REST contract versioning.
+          </p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="p-8 rounded-2xl bg-slate-900 border border-slate-800/80 hover:border-slate-700 transition">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 font-bold mb-6">
+            ☁️
+          </div>
+          <h4 class="text-xl font-bold text-white">Cloud & Distributed Infrastructure</h4>
+          <p class="mt-3 text-sm text-slate-400 leading-relaxed">
+            AWS EC2, S3, RDS, auto-scaling, circuit breakers, timeouts, caching strategies, and distributed observability (APM, metrics, tracing).
+          </p>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="p-8 rounded-2xl bg-slate-900 border border-slate-800/80 hover:border-slate-700 transition">
+          <div class="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 font-bold mb-6">
+            🤖
+          </div>
+          <h4 class="text-xl font-bold text-white">AI-Assisted Engineering Workflows</h4>
+          <p class="mt-3 text-sm text-slate-400 leading-relaxed">
+            Developing internal agentic investigation tools that gather evidence, query observability platforms, and assist with real-time incident triage.
+          </p>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="p-8 rounded-2xl bg-slate-900 border border-slate-800/80 hover:border-slate-700 transition">
+          <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 font-bold mb-6">
+            🎯
+          </div>
+          <h4 class="text-xl font-bold text-white">Technical Leadership & System Design</h4>
+          <p class="mt-3 text-sm text-slate-400 leading-relaxed">
+            Leading engineering teams, conducting rigorous system design reviews, defining architectural standards, and driving end-to-end delivery.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Career Experience Timeline -->
+  <section id="experience" class="py-20 border-b border-slate-800/60">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mb-16">
+        <h2 class="text-xs font-bold uppercase tracking-widest text-sky-400">Career Progression</h2>
+        <h3 class="text-3xl sm:text-4xl font-bold text-white mt-3">Professional Track Record</h3>
+      </div>
+
+      <div class="space-y-12 relative before:absolute before:inset-0 before:left-4 md:before:left-1/2 before:-ml-px before:w-0.5 before:bg-slate-800/80">
+        
+        <!-- Job 1: Nubank -->
+        <div class="relative flex flex-col md:flex-row items-start group">
+          <div class="flex items-center justify-center w-9 h-9 rounded-full bg-sky-500 text-slate-950 font-bold text-xs ring-8 ring-slate-950 absolute left-0 md:left-1/2 md:-translate-x-1/2 z-10">
+            Nu
+          </div>
+          
+          <div class="ml-12 md:ml-0 md:w-1/2 md:pr-12 md:text-right">
+            <span class="inline-block px-3 py-1 text-xs font-semibold text-sky-400 bg-sky-500/10 border border-sky-500/20 rounded-full mb-2">April 2024 – Present</span>
+            <h4 class="text-xl font-bold text-white">Nubank</h4>
+            <p class="text-sm font-semibold text-slate-300">Senior Software Engineer</p>
+            <p class="text-xs text-slate-400 mt-1">São Paulo, Brazil (Remote)</p>
+          </div>
+
+          <div class="ml-12 md:ml-0 md:w-1/2 md:pl-12 mt-4 md:mt-0">
+            <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800/80">
+              <ul class="space-y-3 text-sm text-slate-300 list-disc list-inside leading-relaxed">
+                <li>Developing <strong class="text-white">Post-Purchase Financing</strong> capabilities using Clojure, functional programming, and reusable installment infrastructure.</li>
+                <li>Built and evolved backend APIs for <strong class="text-white">NuPay Credit and Payment Conditions</strong> with versioned contracts and sandbox environments.</li>
+                <li>Automated financial refund workflows for installment financing, performing proportional calculations and interest reversals.</li>
+                <li>Contributed to <strong class="text-white">Credit Awareness & Merchants Hub</strong> using Backend-Driven Content (BDC), resulting in a <strong class="text-sky-400 font-semibold">68% conversion increase</strong> to NuPay.</li>
+                <li>Engineered an internal AI-assisted diagnostic tool using agentic workflows and internal knowledge retrieval for infrastructure incidents.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 2: Avenue Code -->
+        <div class="relative flex flex-col md:flex-row items-start group">
+          <div class="flex items-center justify-center w-9 h-9 rounded-full bg-slate-800 border border-slate-700 text-slate-300 font-bold text-xs ring-8 ring-slate-950 absolute left-0 md:left-1/2 md:-translate-x-1/2 z-10">
+            AC
+          </div>
+          
+          <div class="ml-12 md:ml-0 md:w-1/2 md:pr-12 md:text-right">
+            <span class="inline-block px-3 py-1 text-xs font-semibold text-slate-400 bg-slate-800/60 border border-slate-700/50 rounded-full mb-2">Jan 2022 – Apr 2024</span>
+            <h4 class="text-xl font-bold text-white">Avenue Code</h4>
+            <p class="text-sm font-semibold text-slate-300">Software Engineer / Tech Lead</p>
+          </div>
+
+          <div class="ml-12 md:ml-0 md:w-1/2 md:pl-12 mt-4 md:mt-0">
+            <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800/80">
+              <ul class="space-y-3 text-sm text-slate-300 list-disc list-inside leading-relaxed">
+                <li>Redesigned and optimized high-traffic Java microservices (Spring Boot, AWS), <strong class="text-indigo-400 font-semibold">reducing system downtime by 40%</strong> and improving API response times by 25%.</li>
+                <li>Served as Tech Lead guiding architectural decisions, system design, code reviews, and agile delivery across engineering teams.</li>
+                <li>Architected a data-driven feature flagging and A/B testing platform supporting digital products with millions of monthly active users.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 3: NTT DATA -->
+        <div class="relative flex flex-col md:flex-row items-start group">
+          <div class="flex items-center justify-center w-9 h-9 rounded-full bg-slate-800 border border-slate-700 text-slate-300 font-bold text-xs ring-8 ring-slate-950 absolute left-0 md:left-1/2 md:-translate-x-1/2 z-10">
+            NTT
+          </div>
+
+          <div class="ml-12 md:ml-0 md:w-1/2 md:pr-12 md:text-right">
+            <span class="inline-block px-3 py-1 text-xs font-semibold text-slate-400 bg-slate-800/60 border border-slate-700/50 rounded-full mb-2">Apr 2021 – Jan 2022</span>
+            <h4 class="text-xl font-bold text-white">NTT DATA Europe & LATAM</h4>
+            <p class="text-sm font-semibold text-slate-300">Software Engineer</p>
+          </div>
+
+          <div class="ml-12 md:ml-0 md:w-1/2 md:pl-12 mt-4 md:mt-0">
+            <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800/80">
+              <ul class="space-y-3 text-sm text-slate-300 list-disc list-inside leading-relaxed">
+                <li>Built real-time transaction categorization microservices using Java, Spring Boot, Apache Kafka, and Apache Spark.</li>
+                <li>Optimized high-volume financial data pipelines and SQL queries, <strong class="text-emerald-400 font-semibold">reducing transaction processing latency by 35%</strong>.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 4: APECATUS -->
+        <div class="relative flex flex-col md:flex-row items-start group">
+          <div class="flex items-center justify-center w-9 h-9 rounded-full bg-slate-800 border border-slate-700 text-slate-300 font-bold text-xs ring-8 ring-slate-950 absolute left-0 md:left-1/2 md:-translate-x-1/2 z-10">
+            AP
+          </div>
+
+          <div class="ml-12 md:ml-0 md:w-1/2 md:pr-12 md:text-right">
+            <span class="inline-block px-3 py-1 text-xs font-semibold text-slate-400 bg-slate-800/60 border border-slate-700/50 rounded-full mb-2">Feb 2020 – Apr 2021</span>
+            <h4 class="text-xl font-bold text-white">APECATUS</h4>
+            <p class="text-sm font-semibold text-slate-300">Senior Software Engineer</p>
+          </div>
+
+          <div class="ml-12 md:ml-0 md:w-1/2 md:pl-12 mt-4 md:mt-0">
+            <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800/80">
+              <ul class="space-y-3 text-sm text-slate-300 list-disc list-inside leading-relaxed">
+                <li>Led backend modeling for LMS product capabilities using Java, Quarkus, Angular, and AWS.</li>
+                <li>Architected scalable cloud infrastructure on AWS (EC2, S3, RDS, auto-scaling), reducing page load times by 50%.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 5: Idealogic -->
+        <div class="relative flex flex-col md:flex-row items-start group">
+          <div class="flex items-center justify-center w-9 h-9 rounded-full bg-slate-800 border border-slate-700 text-slate-300 font-bold text-xs ring-8 ring-slate-950 absolute left-0 md:left-1/2 md:-translate-x-1/2 z-10">
+            ID
+          </div>
+
+          <div class="ml-12 md:ml-0 md:w-1/2 md:pr-12 md:text-right">
+            <span class="inline-block px-3 py-1 text-xs font-semibold text-slate-400 bg-slate-800/60 border border-slate-700/50 rounded-full mb-2">Jun 2015 – Feb 2020</span>
+            <h4 class="text-xl font-bold text-white">Idealogic Software</h4>
+            <p class="text-sm font-semibold text-slate-300">Software Engineer</p>
+          </div>
+
+          <div class="ml-12 md:ml-0 md:w-1/2 md:pl-12 mt-4 md:mt-0">
+            <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800/80">
+              <ul class="space-y-3 text-sm text-slate-300 list-disc list-inside leading-relaxed">
+                <li>Delivered 10+ enterprise production systems (CRM, ERP, Integrations) using Java, Spring, and AWS, automating customer workflows by up to 80%.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Articles Section -->
+  <section class="py-20 border-b border-slate-800/60 bg-slate-900/30">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+        <div>
+          <h2 class="text-xs font-bold uppercase tracking-widest text-sky-400">Engineering Writing</h2>
+          <h3 class="text-3xl sm:text-4xl font-bold text-white mt-2">Technical Articles & Insights</h3>
+        </div>
+        <a href="/blog" class="text-sm font-semibold text-sky-400 hover:text-sky-300 transition flex items-center gap-1">
+          View all articles &rarr;
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {posts.map((post) => (
+          <article class="flex flex-col justify-between p-6 rounded-2xl bg-slate-900 border border-slate-800/80 hover:border-slate-700 transition group">
+            <div>
+              <div class="flex items-center gap-2 text-xs text-slate-400 mb-3">
+                <time datetime={post.data.pubDate.toISOString()}>
+                  {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+                </time>
+                <span>•</span>
+                <span>{post.data.readTime}</span>
+              </div>
+              <h4 class="text-lg font-bold text-white group-hover:text-sky-400 transition leading-snug">
+                <a href={`/blog/${post.id}`}>{post.data.title}</a>
+              </h4>
+              <p class="mt-3 text-sm text-slate-400 line-clamp-3 leading-relaxed">
+                {post.data.description}
+              </p>
+            </div>
+            
+            <div class="mt-6 pt-4 border-t border-slate-800/60 flex items-center justify-between">
+              <div class="flex flex-wrap gap-1.5">
+                {post.data.tags.slice(0, 2).map((tag) => (
+                  <span class="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-800 text-slate-300 border border-slate-700/50">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <a href={`/blog/${post.id}`} class="text-xs font-bold text-sky-400 group-hover:translate-x-1 transition flex items-center gap-1">
+                Read &rarr;
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Connect & Contact -->
+  <section class="py-20 bg-slate-950">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Let's Connect</h2>
+      <p class="mt-4 text-slate-400 max-w-xl mx-auto leading-relaxed">
+        Interested in discussing software architecture, distributed systems, functional programming, or technical insights? Connect with me directly on LinkedIn or explore my work on GitHub.
+      </p>
+
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+        <a
+          href="https://www.linkedin.com/in/andersonmaikrodrigues"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-6 py-3.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-sm transition shadow-lg shadow-sky-500/20 flex items-center gap-2"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.78a1.62 1.62 0 1 0 0 3.24 1.62 1.62 0 0 0 0-3.24z"/></svg>
+          Connect on LinkedIn
+        </a>
+        <a
+          href="https://github.com/andersonmaikon-droid"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-white font-bold text-sm transition flex items-center gap-2"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          Explore GitHub Repositories
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+

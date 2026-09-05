@@ -1,0 +1,55 @@
+# Anderson Maik Rodrigues
+
+> Senior Software Engineer at Nubank specializing in Clojure, Java, and High-Scale Distributed Systems.
+
+## Core Summary
+Anderson Rodrigues is a Senior Software Engineer with over 8 years of experience designing, architecting, and operating scalable backend services, event-driven microservices, and financial transaction processing systems. Currently at Nubank, he works on credit and payment platforms processing millions of transactions, focusing on Clojure, functional programming, and distributed systems resilience.
+
+## Primary Technical Expertise
+- **Languages:** Clojure, Java (6-21+), Functional Programming, SQL
+- **Architecture & Systems:** Distributed Systems, Event-Driven Architecture, Microservices, API-Driven Development, Domain-Driven Design (DDD)
+- **Frameworks & Tools:** Spring Boot, Quarkus, Apache Kafka, Apache Spark, REST APIs, OAuth
+- **Cloud & Infrastructure:** AWS (EC2, S3, RDS), Circuit Breakers, Observability, Caching
+- **AI & Automation:** AI-assisted engineering workflows, internal agentic diagnostic & investigation tools
+
+## Work History
+1. **Nubank** (April 2024 – Present)
+   - *Role:* Senior Software Engineer (August 2026 – Present), Software Engineer (April 2024 – August 2026)
+   - *Focus:* Post-Purchase Financing, NuPay Credit and Payment Conditions, automated financial refund workflows, Credit Awareness & Merchants Hub.
+   - *Impact:* Built reusable installment financing infrastructure for purchases up to 12 installments; automated interest and tax refund calculations for financing reversals; developed BDC (Backend-Driven Content) APIs contributing to a 68% conversion increase for NuPay; built an internal AI-assisted diagnostic tool for incident resolution.
+
+2. **Avenue Code** (January 2022 – April 2024)
+   - *Role:* Software Engineer / Tech Lead
+   - *Focus:* High-traffic Java microservices, Spring Boot, AWS, Tech Leadership, A/B testing & feature flagging platform.
+   - *Impact:* Reduced system downtime by 40% and improved API response times by 25%. Led cross-functional engineering teams.
+
+3. **NTT DATA Europe & LATAM** (April 2021 – January 2022)
+   - *Role:* Software Engineer
+   - *Focus:* Real-time transaction categorization, Apache Kafka, Apache Spark, Java, Spring Boot, AWS.
+   - *Impact:* Reduced transaction processing latency by 35% across pipelines handling millions of daily bank transactions.
+
+4. **APECATUS** (February 2020 – April 2021)
+   - *Role:* Senior Software Engineer
+   - *Focus:* LMS platform capabilities using Java, Quarkus, Angular, and AWS cloud architecture.
+   - *Impact:* Delivered 5+ major product releases and reduced page load times by 50%.
+
+5. **Idealogic Software** (June 2015 – February 2020)
+   - *Role:* Software Engineer (Progressed from Junior to Senior)
+   - *Focus:* ERP, CRM, enterprise software automation with Java, Spring, Struts 2, AWS.
+   - *Impact:* Delivered 10+ production systems, automating manual workflows by up to 80%.
+
+## Education & Certifications
+- **Bachelor's Degree in Computer Science** - Universidade de Santa Cruz do Sul (2016 – 2023)
+- **Associate's Degree in IT** - Universidade de Santa Cruz do Sul (2014 – 2015)
+- **Certifications:** Apache Airflow Data Engineering, SOLID Java & OOP, Apache Kafka Cluster & Evolution, Generative AI Fundamentals, AI Fluency Framework.
+
+## Published Technical Articles
+- [Building Post-Purchase Financing at Scale with Clojure](https://andersonmaikrodrigues.com/blog/post-purchase-financing-clojure)
+- [Automating Complex Refund Workflows in Event-Driven Financial Systems](https://andersonmaikrodrigues.com/blog/automating-financial-refund-workflows)
+- [Leveraging AI Agents for Real-Time Infrastructure Incident Diagnostics](https://andersonmaikrodrigues.com/blog/ai-assisted-engineering-investigations)
+
+## Official Profiles
+- **Website:** https://andersonmaikrodrigues.com
+- **LinkedIn:** https://www.linkedin.com/in/andersonmaikrodrigues
+- **GitHub:** https://github.com/andersonmaikon-droid
+- **Email:** andersonmaikrodrigues@gmail.com
